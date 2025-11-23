@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EFIELD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="imgs/icon.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel" id="controls">
+            <h2>EFIELD</h2>
+            <fieldset>
+                <legend>Charges Management</legend>
+                <button id="addCharge">Add Charge</button>
+                <button id="removeCharge">Remove Selected</button>
+                <label>Selected value:<input type="number" id="chargeValue" step="0.1"></label>
+            </fieldset>
+            <fieldset>
+                <legend>Field Vectors</legend>
+                <label>Density:<input type="range" id="fieldDensity" min="0.05" max="0.5" step="0.01"
+                        value="0.3"></label>
+                <label>Width:<input type="range" id="vectorWidth" min="0.001" max="0.02" step="0.001"
+                        value="0.008"><span id="vectorWidthVal">0.008</span></label>
+                <label>Min length:<input type="number" id="minLength" step="0.01" value="0.08"></label>
+                <label>Max length:<input type="number" id="maxLength" step="0.01" value="0.35"></label>
+            </fieldset>
+            <fieldset>
+                <legend>Equipotential Lines</legend>
+                <label>Max:<input type="number" id="potMax" step="0.1" value="5"></label>
+                <label>Min:<input type="number" id="potMin" step="0.1" value="-5"></label>
+                <label>Lines:<input type="number" id="equipDensity" min="2" max="50" step="1" value="12"></label>
+                <label>Width:<input type="range" id="equipWidth" min="0.001" max="0.02" step="0.001" value="0.010"><span
+                        id="equipWidthVal">0.010</span></label>
+            </fieldset>
+            <fieldset>
+                <legend>Charges Appearance</legend>
+                <label><input type="checkbox" id="scaleCharge" checked> Scale size with |q|</label>
+                <label>Base size:<input type="range" id="baseChargeSize" min="0.02" max="0.2" step="0.005"
+                        value="0.08"><span id="baseChargeVal">0.08</span></label>
+            </fieldset>
+            <fieldset>
+                <legend>Text Appearance</legend>
+                <label><input type="checkbox" id="showLabels" checked> Show labels</label>
+                <label>Text size:<input type="range" id="textSize" min="0.05" max="0.3" step="0.01" value="0.15"><span
+                        id="textSizeVal">0.15</span></label>
+                <label>Stroke width:<input type="range" id="textStroke" min="0.001" max="0.02" step="0.001"
+                        value="0.003"><span id="textStrokeVal">0.003</span></label>
+            </fieldset>
+            <fieldset>
+                <legend>Actions</legend>
+                <button id="exportSVG">Download SVG</button>
+                <button id="resetApp">Reset</button>
+            </fieldset>
+        </div>
+        <div class="diagram">
+            <svg id="canvas" viewBox="-3 -2 6 5"></svg>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
