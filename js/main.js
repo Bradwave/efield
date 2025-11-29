@@ -28,6 +28,9 @@ let state = JSON.parse(localStorage.getItem('chargesAppState')) || {
     baseChargeSize: 0.08, textSize: 0.15, textStroke: 0.003
 };
 
+// panel collapsed state persisted in the same state object
+if (typeof state.panelCollapsed === 'undefined') state.panelCollapsed = false;
+
 let selectedCharge = null, isDragging = false;
 
 function saveState() { localStorage.setItem('chargesAppState', JSON.stringify(state)); }
@@ -208,6 +211,37 @@ function generate() {
         });
     });
 }
+
+// --- Panel collapse/expand control ---
+function initPanelToggle() {
+    const container = document.querySelector('.container');
+    const btn = document.getElementById('togglePanel');
+    if (!btn || !container) return;
+
+    function applyPanelState() {
+        if (state.panelCollapsed) {
+            container.classList.add('collapsed');
+            // keep only aria-expanded for CSS-driven icon
+            btn.setAttribute('aria-expanded', 'false');
+        } else {
+            container.classList.remove('collapsed');
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    btn.addEventListener('click', () => {
+        state.panelCollapsed = !state.panelCollapsed;
+        saveState();
+        applyPanelState();
+        // regenerate so layout-related SVG sizing updates if needed
+        generate();
+    });
+
+    // apply initial state
+    applyPanelState();
+}
+
+initPanelToggle();
 
 // Pointer events
 svg.addEventListener("pointermove", e => {

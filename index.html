@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EFIELD</title>
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="imgs/icon.svg">
@@ -12,7 +13,10 @@
 <body>
     <div class="container">
         <div class="panel" id="controls">
-            <h2>EFIELD</h2>
+            <div class="panel-header">
+                <button id="togglePanel" aria-expanded="true" aria-label="Toggle panel"></button>
+                <h2>EFIELD</h2>
+            </div>
             <fieldset>
                 <legend>Charges Management</legend>
                 <button id="addCharge">Add Charge</button>
